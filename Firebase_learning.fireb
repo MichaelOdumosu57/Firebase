@@ -66,19 +66,16 @@
 ..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.                                         
 
 
-                                        
-         .,:;1t111tf1;:,                
-      ,i1i:,:i,,,,,ii.:;ii,             
-    ,1i,.   i.      i,   ,ii.           
-   ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
-  ;1  ,:        :,       i, .t.         
- .f . :;        ,;       ::  ,t         
- i1::;;i:::i;:::;1;:;i;;:i1:::f:        
- 1,        i        :i ... .::;iittti.  
- 1:,,......i, .  .  ,i .  :i,. .1,.1,t. 
- 1;,,i;::::;;::1::::;i:;1;f;:::ti,i1 1i 
- ;1..:i      ..t,..     1,i    ;.;@@t1t 
-  :;;;i;;;iiii;ii;;;;;;;t1tiii;1i1i;::. 
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:        
 
 
 
@@ -251,7 +248,7 @@ click through remaining steps
 
 use these scitps at the bottom of your body tag 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/7.8.0/firebase-app.js"></script>
+<script src="/__/firebase/7.8.0/firebase-ap.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -529,3 +526,152 @@ function saveMessage(messageText) {
     console.error('Error writing new message to database', error);
   });
 }
+
+
+so now when you refresh the page and write a message, you see it in the the database console 
+
+
+ ,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,S,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.  
+
+now when reading messages they need to be suncs used the loadMessages in main js to do what needs to be done
+
+
+ ,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,S,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.  
+
+
+for delaing with files use cloud storage for firebase 
+
+
+    Creates a "placeholder" chat message in the chat feed, so that users see a "Loading" animation while we upload the image.
+    Uploads the image file to Cloud Storage to this path: /<uid>/<messageId>/<file_name>
+    Generates a publicly readable URL for the image file.
+    Updates the chat message with the newly uploaded image file's URL in lieu of the temporary loading image.
+    saveImageMessage in public/mains
+
+
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,S,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.  
+
+Show notifications 
+
+done with Firebase Cloud Messaging (FCM)
+
+
+Whitelist the GCM Sender ID
+
+done in manifest.json like this 
+  "gcm_sender_id": "103953800507"
+
+
+FCM service worker 
+firebase-messaging-sw.js
+with this script 
+
+importScripts('/__/firebase/6.0.4/firebase-app.js');
+importScripts('/__/firebase/6.0.4/firebase-messaging.js');
+importScripts('/__/firebase/init.js');
+
+firebase.messaging();
+
+GET FCM device tokens 
+replace code for saveMessagingDeviceToken
+in public/main.js
+
+
+to ask the user to grant permission to show desktop notifications 
+firebase.messaging().requestPermission()
+replace code for requestNotificationsPermissions()
+in public/main.js 
+
+
+@@@@@@@@@@@@@@
+@@@@@    22222
+2222      2222
+@@@        @@@   at this point firefox starts to deny permission to do things 
+@@          @@
+@@          @@
+
+
+your FCM device token :dx7jaq-HZEuXzNjg_95GQ6:APA91bFil64zn2F5jrVcyEGmVnr7ra436fXBCfqGCO1KIv00d1jMX3_-u4lWMHeUnxrDFHJC2hNwJa99keIgA6k6dy2dhsXpV3nvvMsnMkaF3GccCpuVyUsaliWvaIY29RRIZtn1XjY9
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:      
+
+Send a notification to your device 
+
+you need the server key  in 
+Firebase Console > Project Settings > Cloud Messaging,
+AAAAw__Js2I:APA91bETh_Y-aNLvJRK9ZicvuWjCijmZ2HTDQsGed50a_OHOkQQYEmTQy80cFRM7J00feFrtBtyBNt8HrwExuW_2N1yNMCbMAPUFssv9--j6SpA91mKdnfcycypAmzRbGnOwB2VfBBnC
+
+run this in powershell
+curl -H "Content-Type: application/json" \
+     -H "Authorization: key= & '$env:FCMCloudMessagingServerKey'"\
+     -d '{
+           "notification": {
+             "title": "New chat message!",
+             "body": "There is a new message in FriendlyChat",
+             "icon": "/images/profile_placeholder.png",
+             "click_action": "http://localhost:5000"
+           },
+           "to:'$env:FCMDeviceToken'"
+         }' \
+     https://fcm.googleapis.com/fcm/send
+
+
+curl --location --request POST 'https://fcm.googleapis.com/fcm/send?Authorization=key=your_server_key&Content-Type=application/json' \
+--header 'Authorization: key=your_server_key' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+           "notification": {
+             "title": "New chat message!",
+             "body": "There is a new message in FriendlyChat",
+             "icon": "/images/profile_placeholder.png",
+             "click_action": "http://localhost:5000"
+           },
+           "to": "fcm_Device_token"
+}'  
+
+you can use above
+the postman request you need to send is in the firebase collection in postman of this computer
