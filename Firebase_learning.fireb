@@ -860,3 +860,98 @@ https://friendlychat-a8cc9.web.app
 to learn more 
 https://codelabs.developers.google.com/codelabs/firestore-web/#0
 https://codelabs.developers.google.com/codelabs/firebase-perf-mon-web/
+
+
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,S,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
+
+
+Cloud functions 
+go into friendlychat-web app and go into cloud-functions-start
+https://codelabs.developers.google.com/codelabs/firebase-cloud-functions/#5
+
+The Functions Directory
+npm install -s 
+Firebase SDK for Cloud Functions and the Firebase Admin SDK. 
+
+tney run code in node 6 not node 8 
+
+@@@@@@@@@@@@@@
+@@@@@    22222
+2222      2222
+@@@        @@@ changed to node for beta 
+@@          @@
+@@          @@
+
+so we weed fn and admin to get things done 
+
+to initalize 
+ // Import the Firebase SDK for Google Cloud Functions.
+const functions = require('firebase-functions');
+// Import and initialize the Firebase Admin SDK.
+const admin = require('firebase-admin');
+admin.initializeApp();
+
+so in database -> data -> messages we have the fields 
+name, profilePicUrl, text and timestamp, with  cloud fn we can do more 
+
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:   
+
+functions.auth().onCreate which runs the function every time a user signs-in for the first time in your Firebase app.
+in index.js
+
+then to use it 
+firebase deploy --only functions
+
+see when we deploy fn it takes a long time, because were firing the API  and installing the fn 
+
+// Adds a message that welcomes new users into the chat.
+exports.addWelcomeMessages = functions.auth.user().onCreate(async (user) => {
+  console.log('A new user signed in for the first time.');
+  const fullName = user.displayName || 'Anonymous';
+
+  // Saves the new welcome message into the database
+  // which then displays it in the FriendlyChat clients.
+  await admin.firestore().collection('messages').add({
+    name: 'Firebase Bot',
+    profilePicUrl: '/images/firebase-logo.png', // Firebase logo
+    text: `${fullName} signed in for the first time! Welcome!`,
+    timestamp: admin.firestore.FieldValue.serverTimestamp(),
+  });
+  console.log('Welcome message written to database.');
+});
+  
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:   
+
+
+Sign out delete yourself from the authenticated users and then sign in, the app now notifies that you have signed in for the first time         
