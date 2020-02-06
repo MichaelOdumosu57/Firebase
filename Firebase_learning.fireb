@@ -675,3 +675,188 @@ curl --location --request POST 'https://fcm.googleapis.com/fcm/send?Authorizatio
 
 you can use above
 the postman request you need to send is in the firebase collection in postman of this computer
+
+
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,S,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
+
+
+Cloud Firestore security rules
+
+in Database -> Rules
+the default means anyone can read or write to the datastore  at a certain time 
+
+were modify that w/ this code
+click publish  
+and updatte locally
+also mkae firestore.rules in the local dir and update  
+check the firebase orioerty in firebase.json 
+to update
+firebase deploy --only firestore
+you should see no errors and your terminal converted to project console
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Messages:
+    //   - Anyone can read.
+    //   - Authenticated users can add and edit messages.
+    //   - Validation: Check name is same as auth token and text length below 300 char or that imageUrl is a URL.
+    //   - Deletes are not allowed.
+    match /messages/{messageId} {
+      allow read;
+      allow create, update: if request.auth != null
+                    && request.resource.data.name == request.auth.token.name
+                    && (request.resource.data.text is string
+                      && request.resource.data.text.size() <= 300
+                      || request.resource.data.imageUrl is string
+                      && request.resource.data.imageUrl.matches('https?://.*'));
+      allow delete: if false;
+    }
+    // FCM Tokens:
+    //   - Anyone can write their token.
+    //   - Reading list of tokens is not allowed.
+    match /fcmTokens/{token} {
+      allow read: if false;
+      allow write;
+    }
+  }
+}
+
+to unit test it 
+firebase emulators:start --only firestore 
+
+
+
+
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,S,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
+
+Cloud storage security rules 
+
+so this storage security controls what types of data moves in and out as well as the data itself 
+default is this 
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+
+update rules t o
+
+    Allow each user to write only to their own specific folders
+    Allow anyone to read from Cloud Storage
+    Make sure that the files uploaded are images
+    Restrict the size of the images that can be uploaded to maximum 5 MB
+
+with these rules then may take a minute to update 
+update them by making a storage.rules files at web-start root 
+
+in firebase.json add the code below 
+
+
+and to apply changes 
+firebase deploy --only storage
+
+
+// Returns true if the uploaded file is an image and its size is below the given number of MB.
+function isImageBelowMaxSize(maxSizeMB) {
+  return request.resource.size < maxSizeMB * 1024 * 1024
+      && request.resource.contentType.matches('image/.*');
+}
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{userId}/{messageId}/{fileName} {
+      allow write: if request.auth != null && request.auth.uid == userId && isImageBelowMaxSize(5);
+      allow read;
+    }
+  }
+}
+
+
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,S,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
+
+
+Collect performance data 
+to enable https://firebase.google.com/docs/perf-mon/get-started-web
+
+to initialize Performance Monitoring. in public/scripts/main
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:     
+
+First input delay - first impression of responsiveness of the app 
+
+to enable 
+open public/index.html 
+uncomment the script tag 
+thats it 
+https://firebase.google.com/docs/perf-mon/get-started-web#add-custom-trace
+https://firebase.google.com/docs/perf-mon/custom-attributes
+
+
+
+@@@@@@@@@@@@@@
+@@@@@    22222
+2222      2222      performance data usually displays within the last 12 hrs 
+@@@        @@@
+@@          @@
+@@          @@
+
+
+
+15 Deploy app using firebase hosting 
+has a hosting service to serve assets and web apps this was already done for you at firebase.json under hosting 
+
+to deploy given files to app 
+firebase deploy --except functions
+
+now its hosted here 
+https://friendlychat-a8cc9.firebaseapp.com
+https://friendlychat-a8cc9.web.app
+
+to learn more 
+https://codelabs.developers.google.com/codelabs/firestore-web/#0
+https://codelabs.developers.google.com/codelabs/firebase-perf-mon-web/
