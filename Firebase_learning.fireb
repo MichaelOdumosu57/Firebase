@@ -1002,3 +1002,31 @@ functions.storage().onFinalize
     then refer to the blur offensive images in the index.js 
     blurOffensiveImages,blurImage
 
+
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,S,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
+
+
+New Message Notifications 
+you need their FCM device token 
+look at sendNotifications in index.js 
+then we also need to clean up tokens look at the cleanupTokens file 
+
+
+@@@@@@@@@@@@@@
+@@@@@    22222
+2222      2222   3rd party service requires paid plan by google 
+@@@        @@@
+@@          @@
+@@          @@
+
