@@ -1030,3 +1030,1076 @@ then we also need to clean up tokens look at the cleanupTokens file
 @@          @@
 @@          @@
 
+
+
+
+               ..                       
+              .:     :.                 
+              :i     ,;..  ..           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.       
+         .: ,tt11ti;i1;;1:  , ;t.       
+         :,  it1it1;1ti;;ii,t :,        
+         , : .i;i;;;1tti;:1t1.          
+        . .1.,i1;::itt1i;,it1i .        
+        : :t1;tt1;::;;;:,,ittt.:        
+        i :ttiit1i:..,,..:1tt1 i.       
+        :i.1t1;;;:.     ,1tt1.:;        
+         ,::1ft1;;:,.,:;i1itt1fi;.      
+      .,;1tLCLLttLift1fLLt11fLtfi,      
+     ,iitfCf;;1itC,LL1t11LCLfti:.       
+     ,;;;;; .i;;if Lfii1,.iLGLiii.      
+       ..   ,iiii, ii;;;i,  :;;;,       
+             ..,.  ,;;iii,              
+                     .,,.   
+
+Installing Firebase into your computer and into your project 
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.  
+
+Installing firebase
+
+to install
+npm install -s firebase
+
+they got nvmwindows amazing 
+
+to login 
+firebase login 
+
+to see your projects 
+firebase projects:list
+
+to update to the latest version 
+npm install -s firebase-tools
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.  
+
+setting up firebase ci 
+
+npm install -g firebase-tools
+firebase login:ci 
+visit the url provided sign in with a google acct 
+print a new refersh token 
+Store the output token in a secure but accessible way in your CI system
+use it when running firebase commands 
+when your done firebase logout --token token
+
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.  
+
+initalize a project 
+firebase init 
+make all rules rules.json 
+do not allow to do any npm install do it yourself with npm install -s 
+if angular use typescript 
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.  
+
+project alias 
+they seem to resemble git branches 
+Source control and project aliases
+
+In general, you should check your .firebaserc file into source control to allow your team to share project aliases. 
+However, for open source projects or starter templates, you should generally not check in your .firebaserc file.
++---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Command                               | Description                                                                                                                                                                                                           |
++---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| firebase use                          | View a list of currently defined aliases for your project directory                                                                                                                                                   |
++---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| firebase use \project_id_or_alias     | Directs all commands to run against the specified Firebase project. The CLI uses this project as the currently "active project""."                                                                                    |
++---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| firebase use --clear                  | Directs all commands to run against the Firebase project assigned the default alias. The CLI uses this project as the currently "active project"". Running this command is the same as running firebase use default." |
++---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| firebase use \--unalias project_alias | Removes an alias from your project directory.                                                                                                                                                                         |
++---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.  
+
+
+firebase serve 
+
+firebase serve
+firebase serve --only functions,hosting // uses a flag
+
+To emulate HTTP functions only, use the following command:
+firebase serve --only functions
+
+to test from other local devices 
+firebase serve --host 0.0.0.0  // accepts requests to any host
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.  
+
+
+firebase deploy 
+need to have a firebase.json file 
+deployments rewrite your security rules 
+
+
+to add a comment 
+firebase deploy -m "Deploying the best new feature ever."
+
+
++--------------------------+---------------------------------------------------------------------------------+
+| Flag syntax              | Service or feature deployed                                                     |
++--------------------------+---------------------------------------------------------------------------------+
+| --only hosting           | Firebase Hosting content                                                        |
++--------------------------+---------------------------------------------------------------------------------+
+| --only database          | Firebase Realtime Database rules                                                |
++--------------------------+---------------------------------------------------------------------------------+
+| --only storage           | Cloud Storage for Firebase rules                                                |
++--------------------------+---------------------------------------------------------------------------------+
+| --only firestore         | Cloud Firestore rules and indexes                                               |
++--------------------------+---------------------------------------------------------------------------------+
+| --only firestore:rules   | Cloud Firestore rules                                                           |
++--------------------------+---------------------------------------------------------------------------------+
+| --only firestore:indexes | Cloud Firestore indexes                                                         |
++--------------------------+---------------------------------------------------------------------------------+
+| --only functions         | Cloud Functions for Firebase (more specific versions of this flag are possible) |
++--------------------------+---------------------------------------------------------------------------------+
+
+
+to deploy specific functions 
+firebase deploy --only functions:function1,functions:function2,functions:groupA.function1,groupB.function4
+
+also 
+var functions = require('firebase-functions');
+
+exports.groupA = {
+  function1: functions.https.onRequest(...),
+  function2: functions.database.ref('\path').onWrite(...)
+}
+exports.groupB = require('./groupB');
+
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:        
+
+deploy delete 
+Deletes all functions that match the specified name in all regions: 
+firebase functions:delete function1-name
+
+Deletes a specified function running in a non-default region: 
+firebase functions:delete function1-name --region region-name
+
+Deletes more than one function: 
+firebase functions:delete function1-name function2-name      
+
+Bypasses the confirmation prompt: 
+firebase functions:delete function1-name --force
+
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:        
+
+setup predeploy postdeploy
+
+add properties to functions object in firebase.json file 
+
+             ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:  
+
+Environment variables
+
+Within scripts running in the predeploy and postdeploy hooks, the following environment variables are available:
+
+    $GCLOUD_PROJECT: The active project's project ID
+    $PROJECT_DIR: The root directory containing the firebase.json file
+    $RESOURCE_DIR: (For hosting and functions scripts only) The location of the directory that contains the Hosting or Cloud Functions resources to be deployed
+
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.  
+
+Manage multiple Realtime Database instances
+
+a project has more than one database
+use --instance [instance-name]
+
+    database:get
+    database:profile
+    database:push
+    database:remove
+    database:set
+    database:update
+
+
+CLI admin commands  
+
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| Command  | Description                                                                                                                                               |                                                                               |
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| help     | Displays help information about the CLI or specific commands.                                                                                             |                                                                               |
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| init     | Associates and sets up a new Firebase project in the current directory. This command creates a firebase.json configuration file in the current directory. |                                                                               |
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| list     | "Deprecated. Instead use projects:list. Lists all the Firebase projects to which you have access." 
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| login    | Authenticates the CLI to your Firebase account. Requires access to a web browser.                                                                         |                                                                               |
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| login-ci | Generates an authentication token for use in non-interactive environments.                                                                                |                                                                               |
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| logout   | Signs out the CLI from your Firebase account.                                                                                                             |                                                                               |
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| open     | Opens a browser to relevant project resources.                                                                                                            |                                                                               |
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| list     | Lists all the Firebase projects to which you have access.                                                                                                 |                                                                               |
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| use      | "Sets the active Firebase project for the CLI. Manages project aliases."                                                                                  |                                                                               |
++----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+
+
+
+Project management commands
++------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------------------------------------------------+
+| Command                                                          | Description                                                                 |                                                              |
++------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------------------------------------------------+
+| apps:create                                                      | Creates a new Firebase App in the active project.                           |                                                              |
++------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------------------------------------------------+
+| apps:list                                                        | Lists the registered Firebase Apps in the active project.                   |                                                              |
++------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------------------------------------------------+
+| apps:sdkconfig                                                   | Prints the Google services configuration of a Firebase App.                 |                                                              |
++------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------------------------------------------------+
+| projects:addfirebase                                             | Adds Firebase resources to an existing Google Cloud Platform (GCP) project. |                                                              |
++------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------------------------------------------------+
+| projects:create                                                  | "Creates a new Google Cloud Platform (GCP) project                          | then adds Firebase resources to the new project."            |
++------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------------------------------------------------+
+| projects:list                                                    | Lists all the Firebase projects to which you have access.                   |                                                              |
++------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------------------------------------------------+
+| setup:web                                                        | "Deprecated. Instead                                                        | use apps:sdkconfig and specify web as the platform argument. |
++------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------------------------------------------------+
+| Prints the Google services configuration of a Firebase Web App." |                                                                             |                                                              |
++------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------------------------------------------------+
+
+
+
+                .:;.                                        
+                :11i,                                       
+                i111i,                                      
+               .i1111i,                                     
+               :111111i:    ,;;,                            
+               ;1111111i:  ,i11i,          ..               
+              .i11111111i;:111111,      .,:;;               
+              ,1111111111111111111:   .,:;ii;.              
+              ;111111111ttttt111111:.,:;iiiii:              
+             .i11111111ttttttt11111i;;iiiiiii;              
+             ,11111111ttttttttt11iiiiiiiiiiiii.             
+            .;1111111tttttttttt1iiiiiiiiiiiiii,             
+            .i111111ttttttttt1iiiiiiiiiiiiiiii;.            
+            ,111111tttttttt1iiiiiiiiiiiiiiiiiii.            
+           .:11111ttttttt1iiiiiiiiiiiiiiiiiiiii,            
+           .i1111tttttt1iiiiiiiiiiiiiiiiiiiiiii:.           
+           ,1111ttttt1iiiiiiiiiiiiiiiiiiiiiiiiii.           
+           :111tttt1iiiiiiiiiiiiiiiiiiiiiiiiiiii,           
+          .;11ttt1iiiiiiiiiiiiiiiiiiiiiiiiiiiiii:.          
+          ,11tt1iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii;.          
+          :1t1iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii,          
+         .;1iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii:.         
+         .:;iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii;:.         
+           ..:;iiiiiiiiiiiiiiiiiiiiiiiiiiiiii;:,.           
+               .,:;iiiiiiiiiiiiiiiiiiiiii;:,.               
+                  ..:;;iiiiiiiiiiiiii;;:..                  
+                      .,:;iiiiiiii;:,.                      
+                          .,:;;:,.   
+
+
+Firebase python sdk 
+
+
+              ..                       
+              .:     :.                 
+              :i     ,;..  ..           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.       
+         .: ,tt11ti;i1;;1:  , ;t.       
+         :,  it1it1;1ti;;ii,t :,        
+         , : .i;i;;;1tti;:1t1.          
+        . .1.,i1;::itt1i;,it1i .        
+        : :t1;tt1;::;;;:,,ittt.:        
+        i :ttiit1i:..,,..:1tt1 i.       
+        :i.1t1;;;:.     ,1tt1.:;        
+         ,::1ft1;;:,.,:;i1itt1fi;.      
+      .,;1tLCLLttLift1fLLt11fLtfi,      
+     ,iitfCf;;1itC,LL1t11LCLfti:.       
+     ,;;;;; .i;;if Lfii1,.iLGLiii.      
+       ..   ,iiii, ii;;;i,  :;;;,       
+             ..,.  ,;;iii,              
+                     .,,.       
+
+SDK setup 
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.                                         
+
+to install 
+pip install --user firebase-admin
+
+
+to get the private key 
+In the Firebase console, open Settings > Service Accounts.
+Click Generate New Private Key, then confirm by clicking Generate Key.
+Securely store the JSON file containing the key.
+
+
+to get started 
+lb = json.loads(os.environ['AF_AUTH'])
+cred = credentials.Certificate(lb)
+apps = firebase_admin.initialize_app(cred)
+
+to get started w/o params 
+firebase_admin.initialize_app()
+    it reads the FIREBASE_CONFIG, provide it in JSON 
+
+Initialize several apps 
+# Initialize the default app
+default_app = firebase_admin.initialize_app(cred)
+
+#  Initialize another app with a different config
+other_app = firebase_admin.initialize_app(cred, name='other')
+
+print(default_app.name)    # "[DEFAULT]"
+print(other_app.name)      # "other"
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.                                         
+
+
+What is firebase what is GCP 
+
+GCP is a container for data, code, configuration, and services.
+Firebase is just a sub addition plugin
+so if a data piece is in Firebase expect it to be the same  in GCP 
+
+Firebase hosting 
+Firebase Hosting multisite feature  36 sites per project
+
+
+project ID
+Project name uniquely identifies the app, to get things done have the project ID 
+
+
+Tools to manage project 
+Firebase console 
+Firebase CLI
+Firebase Rest API 
+
+
+
+@@@@@@@@@@@@@@
+@@@@@    22222
+2222      2222    Adding apps to a project, try to keep it under one app 
+@@@        @@@    multi-tenancy different projects, same data location nono 
+@@          @@
+@@          @@
+
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.     
+
+Selecting locations for your project 
+
+
+Google Analytics 
+Cloud Firestore and Storage go in the same place 
+Cloud Functions 
+Google App Engine 
+
+
+Default GCP resource location 
+if you set it once thts it 
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.     
+
+
+Configure multiple projects
+
+just grab that initalizer in python and replace w/ all data needed to reference the other project 
+
+for analytics 
+
+
+            ..                       
+              .:     :.                 
+              :i     ,;..  ..           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.       
+         .: ,tt11ti;i1;;1:  , ;t.       
+         :,  it1it1;1ti;;ii,t :,        
+         , : .i;i;;;1tti;:1t1.          
+        . .1.,i1;::itt1i;,it1i .        
+        : :t1;tt1;::;;;:,,ittt.:        
+        i :ttiit1i:..,,..:1tt1 i.       
+        :i.1t1;;;:.     ,1tt1.:;        
+         ,::1ft1;;:,.,:;i1itt1fi;.      
+      .,;1tLCLLttLift1fLLt11fLtfi,      
+     ,iitfCf;;1itC,LL1t11LCLfti:.       
+     ,;;;;; .i;;if Lfii1,.iLGLiii.      
+       ..   ,iiii, ii;;;i,  :;;;,       
+             ..,.  ,;;iii,              
+                     .,,.       
+
+Firebase and PWA 
+
+
+Safe and secure 	
+
+    Firebase Hosting provisions free SSL certificates for your custom domain and default Firebase subdomain.
+    Firebase Authentication enables you to sign in users across devices securely.
+    FirebaseUI implements best practices for authentication flows.
+
+Fast load time 	
+
+    Firebase Hosting supports HTTP/2 and can cache both your static and dynamic content on a global CDN.
+    The Firebase JavaScript SDK is modular, and you can dynamically import libraries when they're needed.
+
+Network resilience 	
+
+    With Cloud Firestore, you can store and access data in real time and offline.
+    Firebase Authentication maintains a user's authentication state, even offline.
+
+Engage users 	
+
+    Firebase Cloud Messaging enables you to send push messages to your users' devices.
+    With Cloud Functions for Firebase, you can automate re-engagement messages based on cloud events.
+
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.                                         
+
+file: firebaseui_sign-in.png 
+https://firebase.google.com/docs/hosting/quickstart
+
+to get the firebase UI 
+
+npm install firebase --save
+npm install firebaseui --save
+
+var firebase = require('firebase');
+var firebaseui = require('firebaseui');
+// or using ES6 imports:E
+import * as firebaseui from 'firebaseui'
+
+
+Firebase hosting uses HTTP/2 to optimize  "time to first meaningful paint" and "time to interactive", 
+
+dynamic loading 
+https://github.com/firebase/friendlypix-web/blob/master/src/Router.js#L39-L47
+
+Users who dont have dependable internet access 
+use offline data persistence, also be aware of cached sign-in data 
+
+Engage users by sending push notifications 
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.                                         
+
+use bigquery to answer your own analytics questions 
+for free plans use big-query sandbox
+
+there Firebase and GCP IAM - for granular user access control
+
+
+            ..                       
+              .:     :.                 
+              :i     ,;..  ..           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.       
+         .: ,tt11ti;i1;;1:  , ;t.       
+         :,  it1it1;1ti;;ii,t :,        
+         , : .i;i;;;1tti;:1t1.          
+        . .1.,i1;::itt1i;,it1i .        
+        : :t1;tt1;::;;;:,,ittt.:        
+        i :ttiit1i:..,,..:1tt1 i.       
+        :i.1t1;;;:.     ,1tt1.:;        
+         ,::1ft1;;:,.,:;i1itt1fi;.      
+      .,;1tLCLLttLift1fLLt11fLtfi,      
+     ,iitfCf;;1itC,LL1t11LCLfti:.       
+     ,;;;;; .i;;if Lfii1,.iLGLiii.      
+       ..   ,iiii, ii;;;i,  :;;;,       
+             ..,.  ,;;iii,              
+                     .,,.     
+
+Firebase Emulator Suite 
+
+help you test stuff 
+
+            ..                       
+              .:     :.                 
+              :i     ,;..  ..           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.       
+         .: ,tt11ti;i1;;1:  , ;t.       
+         :,  it1it1;1ti;;ii,t :,        
+         , : .i;i;;;1tti;:1t1.          
+        . .1.,i1;::itt1i;,it1i .        
+        : :t1;tt1;::;;;:,,ittt.:        
+        i :ttiit1i:..,,..:1tt1 i.       
+        :i.1t1;;;:.     ,1tt1.:;        
+         ,::1ft1;;:,.,:;i1itt1fi;.      
+      .,;1tLCLLttLift1fLLt11fLtfi,      
+     ,iitfCf;;1itC,LL1t11LCLfti:.       
+     ,;;;;; .i;;if Lfii1,.iLGLiii.      
+       ..   ,iiii, ii;;;i,  :;;;,       
+             ..,.  ,;;iii,              
+                     .,,.    
+
+Firebase extensions 
+
+code that runs when a specifc event happens in your app 
+they are in beta decide wht to do
+
+extensions have an extensions.yaml 
+
+
+    The Google services (APIs) that the extension will use
+    The access roles that the extension requires to operate
+    The extension-specific resources that the extension requires to operate
+    The configurable parameters for the extension
+
+    Prompts you to provide the required configuration values (parameters) for the extension.
+    Enables the listed APIs from the extension.yaml file.
+    Creates a new service account, and assigns it the listed access roles. The extension executes its code using the access granted to this service account.
+    Provisions the listed resources for the extension (for example, a function).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              ..                       
+              .:     :.                 
+              :i     ,;..  ..           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.       
+         .: ,tt11ti;i1;;1:  , ;t.       
+         :,  it1it1;1ti;;ii,t :,        
+         , : .i;i;;;1tti;:1t1.          
+        . .1.,i1;::itt1i;,it1i .        
+        : :t1;tt1;::;;;:,,ittt.:        
+        i :ttiit1i:..,,..:1tt1 i.       
+        :i.1t1;;;:.     ,1tt1.:;        
+         ,::1ft1;;:,.,:;i1itt1fi;.      
+      .,;1tLCLLttLift1fLLt11fLtfi,      
+     ,iitfCf;;1itC,LL1t11LCLfti:.       
+     ,;;;;; .i;;if Lfii1,.iLGLiii.      
+       ..   ,iiii, ii;;;i,  :;;;,       
+             ..,.  ,;;iii,              
+                     .,,.       
+
+https://firebase.google.com/docs/reference/admin/python/firebase_admin.auth#classes
+
+Firebase_admin.auth                      
+
+
+class firebase_admin.auth.ImportUserRecord(uid, email=None, email_verified=None,
+ display_name=None, phone_number=None, photo_url=None, disabled=None, 
+ user_metadata=None, provider_data=None, custom_claims=None, password_hash=None, password_salt=None)
+
+ 	
+
+    uid – User’s unique ID. Must be a non-empty string not longer than 128 characters.
+    email – User’s email address (optional).
+    email_verified – A boolean indicating whether the user’s email has been verified (optional).
+    display_name – User’s display name (optional).
+    phone_number – User’s phone number (optional).
+    photo_url – User’s photo URL (optional).
+    disabled – A boolean indicating whether this user account has been disabled (optional).
+    user_metadata – An auth.UserMetadata instance with additional user metadata (optional).
+    provider_data – A list of auth.UserProvider instances (optional).
+    custom_claims – A dict of custom claims to be set on the user account (optional).
+    password_hash – User’s password hash as a bytes sequence (optional).
+    password_salt – User’s password salt as a bytes sequence (optional).
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.   
+
+the extension has a couple of resources, it needs to function if you uninistall it some functions stay 
+
+use the firebase console to get things done 
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.   
+
+Installing Extensions 
+
+1. View Detailed Info 
+2. Installed choose config options and be aware of billing 
+3. budget alerts and view config details 
+
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.   
+
+Manage installed extensions 
+
+to view logs 
+Dashboard -> Functions -> Logs 
+
+grant permission to extension w/ serrice acct with permissions and roles 
+
+
+              ..                       
+              .:     :.                 
+              :i     ,;..  ..           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.       
+         .: ,tt11ti;i1;;1:  , ;t.       
+         :,  it1it1;1ti;;ii,t :,        
+         , : .i;i;;;1tti;:1t1.          
+        . .1.,i1;::itt1i;,it1i .        
+        : :t1;tt1;::;;;:,,ittt.:        
+        i :ttiit1i:..,,..:1tt1 i.       
+        :i.1t1;;;:.     ,1tt1.:;        
+         ,::1ft1;;:,.,:;i1itt1fi;.      
+      .,;1tLCLLttLift1fLLt11fLtfi,      
+     ,iitfCf;;1itC,LL1t11LCLfti:.       
+     ,;;;;; .i;;if Lfii1,.iLGLiii.      
+       ..   ,iiii, ii;;;i,  :;;;,       
+             ..,.  ,;;iii,              
+                     .,,.  
+
+Firebase authentication 
+allows users into an app 
+
+Firebase User object
+name email, ID, and photo URL 
+anything else stored somewhere else 
+
+we have a current user when sigining out the instance is still functional and updates to it updates the user state 
+
+to understand the user lifecycle use listeners 
+
+
+Tokens 
+Firebase ID tokens, Identity provider tokens,Firebase custom tokens
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.   
+
+Managing Users 
+
+to get a user
+user = auth.get_user_by_email(email)
+
+by phone 
+user = auth.get_user_by_phone_number(phone)
+however were having a hard time w/ this 
+
+@@@@@@@@@@@@@@
+@@@@@    22222
+2222      2222
+@@@        @@@  if you have to get the user by email, try all emails associated w/ the acct 
+@@          @@
+@@          @@
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.   
+
+
+To create a user 
+
+user = auth.create_user(
+    email='user@example.com',
+    email_verified=False,
+    phone_number='+15555550100',
+    password='secretPassword',
+    display_name='John Doe',
+    photo_url='http://www.example.com/12345678/photo.png',
+    disabled=False)
+print('Sucessfully created new user: {0}'.format(user.uid))
+
+    Fireb creates its own uid, if you want to give your own just provide the uid keyword argument 
+
+Property,Type,Description
+uid          ,string,             "The uid to assign to the newly created user. Must be a string between 1 and 128 characters long, inclusive.
+                                     If not provided, a random uid will be automatically generated."
+email          ,string,             The user's primary email. Must be a valid email address.
+emailVerified          ,boolean,             "Whether or not the user's primary email is verified. If not provided, the default is false."
+phoneNumber          ,string,             The user's primary phone number. Must be a valid E.164 spec compliant phone number.
+password          ,string,             "The user's raw, unhashed password. Must be at least six characters long."
+displayName          ,string,             The users' display name.
+photoURL          ,string,             The user's photo URL.
+disabled          ,boolean,             "Whether or not the user is disabled. true for disabled; false for enabled. If not provided, the default is false."
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.   
+
+to update a user 
+
+user = auth.update_user(
+    uid,
+    email='user@example.com',
+    phone_number='+15555550100',
+    email_verified=True,
+    password='newPassword',
+    display_name='John Doe',
+    photo_url='http://www.example.com/12345678/photo.png',
+    disabled=True)
+print('Sucessfully updated user: {0}'.format(user.uid))
+you need the uid to update the user 
+
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.   
+
+List all users 
+
+# Start listing users from the beginning, 1000 at a time.
+page = auth.list_users()
+while page:
+    for user in page.users:
+        print('User: ' + user.uid)
+    # Get next batch of users.
+    page = page.get_next_page()
+
+# Iterate through all users. This will still retrieve users in batches,
+# buffering no more than 1000 users in memory at a time.
+for user in auth.list_users().iterate_all():
+    print('User: ' + user.uid)
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
+
+password salts and hashes 
+
+
+firebase_admin sdk doesnt have this by default 
+firebaseauth.configs.getHashConfig
+can do this by creating custom IAM role
+
+
+To create the custom IAM role:
+    Go to the Roles page in IAM & admin panel in the GCP Console.
+    Select your project from the drop-down at the top of the page.
+    Click CREATE ROLE
+    Click ADD PERMISSIONS
+    Search for firebaseauth.configs.getHashConfig permission and select that checkbox.
+    Click ADD
+    Click CREATE to finish creating the new role.
+
+Add the created custom role to the user/service account in the IAM page:
+
+    In the IAM & admin panel, select IAM
+    Select the service or user account from the list of members for editing.
+    Click ADD ANOTHER ROLE.
+    Search for the new custom role previously created.
+    Click SAVE.
+
+@@@@@@@@@@@@@@
+@@@@@    22222
+2222      2222
+@@@        @@@ Dont use the editor role to get this done 
+@@          @@
+@@          @@
+
+
