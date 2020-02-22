@@ -2348,6 +2348,231 @@ except exceptions.FirebaseError as error:
     print('Error importing users:', error)
 
 
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,. 
+
+Create Custom Tokens
+
+get yr JWT here 
+
+to do this need a 3rd party server that accepts sign in credentials, and returns a custom JWT 
+frontend uses JWT to verify w/ firebase
+Furthermore, the contents of the JWT will be available in the auth object in your Firebase Realtime Database Security Rules  and 
+request.auth object in your Cloud Storage Security Rules.
+
+can do this w/ firebase admin sdk or 3rd party 
+
+
+             ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+using the service acct ID 
+
+
+looks like this 
+<client-id>@<project-id>.iam.gserviceaccount.com
+
+
+get it here 
+https://console.cloud.google.com/iam-admin/serviceaccounts?project=backendfire&folder=&organizationId=&supportedpurview=project
+
+and make it an env var thnks
+
+
+           ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+Create custom tokens using the Firebase Admin SDK
+
+
+to create a custom token 
+
+uid = 'some-uid'
+additional_claims = {
+    'premiumAccount': True
+} #OPTIONAL
+
+custom_token = auth.create_custom_token(uid)
+
+@@@@@@@@@@@@@@
+@@@@@    22222
+2222      2222
+@@@        @@@
+@@          @@
+@@          @@
+
+
+ Firebase tokens comply with the OpenID Connect JWT spec, which means the following claims are reserved and cannot be specified within the additional claims:
+acr
+amr
+at_hash
+aud 	auth_time
+azp
+cnf
+c_hash 	exp
+firebase
+iat
+iss 	jti
+nbf
+nonce
+sub
+
+           ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+send that token to your front end and use it to login 
+
+it modifies storage and database like this
+           ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+service firebase.storage {
+  match /b/<your-firebase-storage-bucket>/o {
+    match /adminContent/{filename} {
+      allow read, write: if request.auth.uid == "some-uid";
+    }
+  }
+}
+
+service firebase.storage {
+  match /b/<your-firebase-storage-bucket>/o {
+    match /premiumContent/{filename} {
+      allow read, write: if request.auth.token.premiumAccount == true;
+    }
+  }
+}
+
+
+@@@@@@@@@@@@@@
+@@@@@    22222
+2222      2222
+@@@        @@@ Troubleshooting guidance is on this page as well
+@@          @@
+@@          @@
+
+
+
+               ..                       
+              .:     :.                 
+              :i     ,;..  ..           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.       
+         .: ,tt11ti;i1;;1:  , ;t.       
+         :,  it1it1;1ti;;ii,t :,        
+         , : .i;i;;;1tti;:1t1.          
+        . .1.,i1;::itt1i;,it1i .        
+        : :t1;tt1;::;;;:,,ittt.:        
+        i :ttiit1i:..,,..:1tt1 i.       
+        :i.1t1;;;:.     ,1tt1.:;        
+         ,::1ft1;;:,.,:;i1itt1fi;.      
+      .,;1tLCLLttLift1fLLt11fLtfi,      
+     ,iitfCf;;1itC,LL1t11LCLfti:.       
+     ,;;;;; .i;;if Lfii1,.iLGLiii.      
+       ..   ,iiii, ii;;;i,  :;;;,       
+             ..,.  ,;;iii,              
+                     .,,.               
+
+
+Pyrebase
+
+since we dont have a python client SDK and we dont want to give this to angular we got pyrebase 
+
+refer to play_pyre.py 
+
+
+           ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+#to login 
+
+
+
+user = auth.sign_in_with_email_and_password('user@example.com', 'newPassword')
+print(user)
+
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+to login with token 
+
+uid = 'some-uid'
+additional_claims = {
+    'premiumAccount': True
+} #OPTIONAL
+
+custom_token = auth.create_custom_token(uid)
+print(custom_token.decode("utf-8") ) 
+user = pyre_auth.sign_in_with_custom_token(custom_token.decode("utf-8") )
+print(user)
+
+
+
+
+
+
 
 
 
