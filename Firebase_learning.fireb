@@ -2398,7 +2398,7 @@ https://console.cloud.google.com/iam-admin/serviceaccounts?project=backendfire&f
 and make it an env var thnks
 
 
-           ..                           
+              ..                           
               ,t:    :1:    :.          
            .:  :t;. :ti,    i,          
            ;;   1t:,t;;. .,1t.          
@@ -2429,7 +2429,7 @@ custom_token = auth.create_custom_token(uid)
 @@          @@
 
 
- Firebase tokens comply with the OpenID Connect JWT spec, which means the following claims are reserved and cannot be specified within the additional claims:
+Firebase tokens comply with the OpenID Connect JWT spec, which means the following claims are reserved and cannot be specified within the additional claims:
 acr
 amr
 at_hash
@@ -2444,7 +2444,7 @@ nbf
 nonce
 sub
 
-           ..                           
+              ..                           
               ,t:    :1:    :.          
            .:  :t;. :ti,    i,          
            ;;   1t:,t;;. .,1t.          
@@ -2456,9 +2456,10 @@ sub
       i1::;;i:::i;:::;1;:;i;;:i1:::f: 
 
 send that token to your front end and use it to login 
-
+refer to pyrebase for login in 
 it modifies storage and database like this
-           ..                           
+
+               ..                           
               ,t:    :1:    :.          
            .:  :t;. :ti,    i,          
            ;;   1t:,t;;. .,1t.          
@@ -2468,6 +2469,7 @@ it modifies storage and database like this
       ;1  ,:        :,       i, .t.         
       .f . :;        ,;       ::  ,t         
       i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
 
 service firebase.storage {
   match /b/<your-firebase-storage-bucket>/o {
@@ -2486,10 +2488,44 @@ service firebase.storage {
 }
 
 
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,. 
+
+To verify Tokens
+
+your admin SDK needs the project ID 
+auth token and JWT are different  so 
+
+decoded_token = auth.verify_id_token(user['idToken'])
+uid = decoded_token['uid']
+print(decoded_token)
+
+user is from logging in w/ token
+
+if SDK had projectId  in fn call tht the one 
+if SDK was given service acct credentials thts the one
+if you have GOOGLE_CLOUD_PROJECT set , thts the one 
+
+
+if were good u get the user back, if were not you get an error 
+
+
+
 @@@@@@@@@@@@@@
 @@@@@    22222
 2222      2222
-@@@        @@@ Troubleshooting guidance is on this page as well
+@@@        @@@ Troubleshooting guidance is on this page as well, but even though we log in w/ pyrebase the rules dont get updated 
 @@          @@
 @@          @@
 
@@ -2520,6 +2556,7 @@ service firebase.storage {
 
 
 Pyrebase
+https://firebase.google.com/docs/database/rest/start
 
 since we dont have a python client SDK and we dont want to give this to angular we got pyrebase 
 
