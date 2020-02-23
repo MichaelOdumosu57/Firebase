@@ -2997,18 +2997,123 @@ print(user)
       https://developers.google.com/gmail/api/guides?hl=en_US
       https://developers.google.com/gmail/api/guides/sending?hl=en_US
 
-      Gmail API
+      Gmail API 
+
+
+      ..                       
+      .:     :.                 
+      :i     ,;..  ..           
+      ,t:    :1:    :.          
+   .:  :t;. :ti,    i,          
+   ;;   1t:,t;;. .,1t.          
+   ;1.  i1;ti:;::11i,  .        
+ .  t1,.11;i1i;it1:   .1.       
+ .: ,tt11ti;i1;;1:  , ;t.       
+ :,  it1it1;1ti;;ii,t :,        
+ , : .i;i;;;1tti;:1t1.          
+. .1.,i1;::itt1i;,it1i .        
+: :t1;tt1;::;;;:,,ittt.:        
+i :ttiit1i:..,,..:1tt1 i.       
+:i.1t1;;;:.     ,1tt1.:;        
+ ,::1ft1;;:,.,:;i1itt1fi;.      
+.,;1tLCLLttLift1fLLt11fLtfi,      
+,iitfCf;;1itC,LL1t11LCLfti:.       
+,;;;;; .i;;if Lfii1,.iLGLiii.      
+..   ,iiii, ii;;;i,  :;;;,       
+     ..,.  ,;;iii,              
+             .,,.  
+             
+Firebase database 
+
+Instead of typical HTTP requests, Firebase Realtime Database uses 
+data synchronization everything related to the data gets updated realtime 
+offline, it persists data to the disk
+can be accessed from client devices
+
+so storage is for big photos documents, media and email 
+use remote config to activate themes for your app 
+firebase hosting host your static webpages, 
+
+with the admin SDK you can get very granular with data and prviliges
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.  
+
+
+to authenticate admin privileges 
+
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+
+// # Fetch the service account key JSON file contents
+cred = credentials.Certificate('path/to/serviceAccountKey.json')
+
+// # Initialize the app with a service account, granting admin privileges
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://databaseName.firebaseio.com'
+})
+
+// # As an admin, the app has access to read and write all data, but there is a way 
+ref = db.reference('restricted_access/secret_document')
+print(ref.get())
+
+#if the mapping doesnt exist you get none 
+
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+      Authenticate with limited privileges
+      {
+        "rules": {
+          "public_resource": {
+            ".read": true,
+            ".write": true
+          },
+          "some_resource": {
+            ".read": "auth.uid === 'my-service-worker'",
+            ".write": false
+          },
+          "another_resource": {
+            ".read": "auth.uid === 'my-service-worker'",
+            ".write": "auth.uid === 'my-service-worker'"
+          }
+        }
+      }
 
       
+    firebase_admin.initialize_app(cred, {
+        'databaseURL': 'https://databaseName.firebaseio.com',
+        'databaseAuthVariableOverride': {
+            'uid': 'my-service-worker'
+        }
+    })
 
+    so now if you do ths
+    ref = db.reference('/restricted_resource')
+    you get exceptions.UnauthenticatedError // which should be unauthorization error 
 
-      
+    
 
-
-
-
-
-
-
-
-
+    
