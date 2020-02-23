@@ -1,3 +1,4 @@
+format js
                 .:;.                                        
                 :11i,                                       
                 i111i,                                      
@@ -2578,6 +2579,16 @@ to get all users if your application been hacked
 auth.revoke_refresh_tokens(uid)
 user = auth.get_user(uid)
 
+user = auth.update_user(
+    uid,
+    email='2@gmail.com'
+    )
+user = auth.update_user(
+    uid,
+    email=original_email 
+    )        
+    
+
 revocation_second = user.tokens_valid_after_timestamp / 1000
 print('Tokens revoked at: {0}'.format(revocation_second))
 
@@ -2615,11 +2626,131 @@ add this to database rules
           ".write": "($user_id === auth.uid) && (auth.token.auth_time > root.child('metadata').child(auth.uid).child('revokeTime').val()) "
         }
     }
-
  
 }
 
-since the API is broken just modify the user account to get the token rejected and modify it back thank you 
+
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+      Advanced Security: Enforce IP address restrictions
+
+      check IP addr, suspicious origin , sudden geolocation change 
+      
+      
+
+      .,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+      .,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+      ....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+      ..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+      .,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+      .,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+      ,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+      .....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+      ,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+      ....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+      ..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+      .,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+      ..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
+      
+      Manage Session Cookies
+      make sure you prevent CSRF here
+
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+      to create session Cookies
+      also check the auth time of the inbound token 
+
+      # Get the ID token sent by the client
+      id_token = flask.request.json['idToken']
+      # Set session expiration to 5 days.
+      expires_in = datetime.timedelta(days=5)
+      try:
+          # Create the session cookie. This will also verify the ID token in the process.
+          # The session cookie will have the same claims as the ID token.
+          session_cookie = auth.create_session_cookie(id_token, expires_in=expires_in)
+          response = flask.jsonify({'status': 'success'})
+          # Set cookie policy for session cookie.
+          expires = datetime.datetime.now() + expires_in
+          response.set_cookie(
+              'session', session_cookie, expires=expires, httponly=True, secure=True)
+          return response
+      except exceptions.FirebaseError:
+          return flask.abort(401, 'Failed to create a session cookie')
+  
+
+          ..                           
+          ,t:    :1:    :.          
+       .:  :t;. :ti,    i,          
+       ;;   1t:,t;;. .,1t.          
+       ;1.  i1;ti:;::11i,  .        
+     .  t1,.11;i1i;it1:   .1.    
+    ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+  ;1  ,:        :,       i, .t.         
+  .f . :;        ,;       ::  ,t         
+  i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+TO   verify session cookie and check permissions 
+admin needs that SDK  in order to work
+
+decoded_claims = auth.verify_session_cookie(session_cookie, check_revoked=True)
+
+
+          ..                           
+          ,t:    :1:    :.          
+       .:  :t;. :ti,    i,          
+       ;;   1t:,t;;. .,1t.          
+       ;1.  i1;ti:;::11i,  .        
+     .  t1,.11;i1i;it1:   .1.    
+    ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+  ;1  ,:        :,       i, .t.         
+  .f . :;        ,;       ::  ,t         
+  i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+  to revoke session 
+
+  decoded_claims = auth.verify_session_cookie(session_cookie,check_revoked=True)
+  auth.revoke_refresh_tokens(decoded_claims['sub'])
+    user = auth.update_user(
+        uid,
+        email='2@gmail.com'
+    )
+    user = auth.update_user(
+        uid,
+        email=original_email 
+    )    
+    decoded_claims = auth.verify_session_cookie(session_cookie,check_revoked=True) 
+
+
+
+
+
+
+
+    
+
+            
+
+
 
 
 
@@ -2700,7 +2831,176 @@ user = pyre_auth.sign_in_with_custom_token(custom_token.decode("utf-8") )
 print(user)
 
 
+      .,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+      .,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+      ....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+      ..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+      .,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+      .,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+      ,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+      .....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+      ,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+      ....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+      ..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+      .,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+      ..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
 
+
+      Control Access with Custom Claims and Security Rules
+      like ubnutu chown permmssion at a granular level 
+      access control is known as claim
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+      
+      To create a custom user claim
+
+      # Set admin privilege on the user corresponding to uid.
+      auth.set_custom_user_claims(uid, {'admin': True})
+      # The new custom claims will propagate to the user's ID token the
+      # next time a new one is issued.
+
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+      
+      
+      to see it in action
+
+      # Verify the ID token first.
+      claims = auth.verify_id_token(id_token)
+      if claims['admin'] is True:
+          # Allow access to requested admin resource.
+          pass
+
+     # Lookup the user associated with the specified uid.
+          user = auth.get_user(uid)
+          # The claims can be accessed on the user record.
+          print(user.custom_claims.get('admin'))
+                    
+          @@@@@@@@@@@@@@
+          @@@@@    22222
+          2222      2222
+          @@@        @@@  In order for the access control claim to apply you need 
+          @@          @@  re-login  the user 
+          @@          @@            
+
+          @@@@@@@@@@@@@@
+          @@@@@    22222
+          2222      2222
+          @@@        @@@  Custom claims are are for  access control only, dont store anything else in there
+          @@          @@  
+          @@          @@            
+
+                          
+    .,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+    .,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+    ....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+    ..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+    .,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+    .,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+    ,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+    .....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+    ,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+    ....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+    ..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+    .,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+    ..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
+    
+    Generating Email Action Links          
+
+    Firebase and google has its own system, if you have your own email system this is what u do
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+      
+    to generate password reset email link 
+    Generate email verification link 
+    Generate email link for sign-in 
+
+      @@@@@@@@@@@@@@
+      @@@@@    22222
+      2222      2222
+      @@@        @@@  you need to whitelist everything
+      @@          @@  
+      @@          @@            
+
+      action_code_settings = auth.ActionCodeSettings(
+        url='https://www.example.com/checkout?cartId=1234',
+        handle_code_in_app=True,
+        ios_bundle_id='com.example.ios',
+        android_package_name='com.example.android',
+        android_install_app=True,
+        android_minimum_version='12',
+        dynamic_link_domain='coolapp.page.link',
+      )
+
+    
+      email = 'user@example.com'
+      link = auth.generate_password_reset_link(email, action_code_settings)
+      link = auth.generate_email_verification_link(email, action_code_settings)
+      link = auth.generate_sign_in_with_email_link(email, action_code_settings)
+
+
+
+      you whitelist by dymanic links 
+
+      in your DNS provider 
+
+      TXT type 
+      sortforyou.com -host 
+      google-site-verification=eIcGZu0pdqK1usuTdtEhDtxuU4jK0Nsby9qDw_59Zck       -value
+
+        it take hour to refresh
+
+    go to console > grow > dynamics > get started
+
+
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+      
+      for sending actual email its probable a seperate GCP cloud extension or  firebase api but thts blaze api, i guess smtp server is very hackable 
+      https://www.hostinger.com/tutorials/how-to-use-free-google-smtp-server
+      https://developers.google.com/gmail/api/guides?hl=en_US
+      https://developers.google.com/gmail/api/guides/sending?hl=en_US
+
+      Gmail API 
+
+
+      
 
 
 
