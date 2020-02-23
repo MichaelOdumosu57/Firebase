@@ -3114,6 +3114,394 @@ print(ref.get())
     ref = db.reference('/restricted_resource')
     you get exceptions.UnauthenticatedError // which should be unauthorization error 
 
+
+
+    .,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+    .,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+    ....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+    ..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+    .,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+    .,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+    ,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+    .....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+    ,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+    ....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+    ..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+    .,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+    ..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
+    
+    Structure Your Database
+
+    gotta think about it 
+    JSON data structure 
+    
+    avoid nesting data 
+    flatten data structure 
+    Make it scabable, if you data has to grow dont get stuck  research 
     
 
+    .,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+    .,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+    ....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+    ..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+    .,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+    .,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+    ,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+    .....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+    ,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+    ....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+    ..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+    .,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+    ..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
     
+    Saving Data 
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+      
+     
+      set 	        Write or replace data to a defined path, like messages/users/<username>
+      update 	    Update some of the keys for a defined path without replacing all of the data
+      push 	        Add to a list of data in the database. Every time you push a new node onto a list, 
+                    your database generates a unique key, like messages/users/<unique-user-id>/<username>
+      transaction 	Use transactions when working with complex data that could be corrupted by concurrent updates    
+
+
+      @@8Cfi,.           t:              .:C@@
+      @G,.              t@8,              .,0@
+      @f..             ,8@@C               .f@
+      @1,.             1@88@i              .i@
+      @i,              C@008G              .:8
+      @i,.            .00LtC0,             .:8
+      @i,.             LC11fC,             .;8
+      @t,,             :1;;11              .f@
+      @C,,              .i1,              .,G@
+      @@;.          .1fLG00CCL1,          .;8@
+      @@G:,,..      f8888888888G.     ..,,;G@@
+      @@@8800GCf11i1GGG000000000LfLLCGG008@@@@
+
+      
+
+    set overwrites the whole property  so if you make a child propr with ref.child if you use set on the parent child is gone everything is gone
+
+      users_ref = ref.child('users')
+      users_ref.set({
+          'alanisawesome': {
+              'date_of_birth': 'June 23, 1912',
+              'full_name': 'Alan Turing'
+          },
+          'gracehop': {
+              'date_of_birth': 'December 9, 1906',
+              'full_name': 'Grace Hopper'
+          }
+      })
+
+
+      @@8Cfi,.           t:              .:C@@
+      @G,.              t@8,              .,0@
+      @f..             ,8@@C               .f@
+      @1,.             1@88@i              .i@
+      @i,              C@008G              .:8
+      @i,.            .00LtC0,             .:8
+      @i,.             LC11fC,             .;8
+      @t,,             :1;;11              .f@
+      @C,,              .i1,              .,G@
+      @@;.          .1fLG00CCL1,          .;8@
+      @@G:,,..      f8888888888G.     ..,,;G@@
+      @@@8800GCf11i1GGG000000000LfLLCGG008@@@@
+
+
+      to append to a prop / update 
+
+      hopper_ref = users_ref.child('gracehop')
+      hopper_ref.update({
+          'nickname': 'Amazing Grace'
+          'gracehop/nickanme':'its me pal'
+      })
+            
+        however if you write like this  you ovverite it 
+        hopper_ref.update({
+            'gracehop': {
+                'value':'replace that object'
+            }
+        })      
+
+      
+        @@8Cfi,.           t:              .:C@@
+        @G,.              t@8,              .,0@
+        @f..             ,8@@C               .f@
+        @1,.             1@88@i              .i@
+        @i,              C@008G              .:8
+        @i,.            .00LtC0,             .:8
+        @i,.             LC11fC,             .;8
+        @t,,             :1;;11              .f@
+        @C,,              .i1,              .,G@
+        @@;.          .1fLG00CCL1,          .;8@
+        @@G:,,..      f8888888888G.     ..,,;G@@
+        @@@8800GCf11i1GGG000000000LfLLCGG008@@@@
+  
+        to generate unique keys while saving data 
+
+        posts_ref = ref.child('posts')
+
+        new_post_ref = posts_ref.push()
+        posts_ref.push({
+            'author': 'gracehop',
+            'title': 'Announcing COBOL, a New Programming Language'
+        })
+        
+        new_post_ref.set({
+            'author': 'gracehop',
+            'title': 'Announcing COBOL, a New Programming Language'
+        })
+        
+        # We can also chain the two calls together
+        posts_ref.push().update({
+            'author': 'alanisawesome',
+            'title': 'The Turing Machine'
+        })
+        
+        # Generate a reference to a new location and add some data using push()
+        new_post_ref = posts_ref.push()
+        
+        # Get the unique key generated by push()
+        post_id = new_post_ref.key        
+
+
+            
+
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+      so we need to maintain state in an applications, when updates are going down and the application depends on data 
+      we use transaction so when one application update that data, the same application gets the updated 'SOURCE OF TRUTH ' not their own local data and from the
+      functionality between the two, so if the data bas must be 'SOURCE OF TRUTH ' you must retrieve the data first 
+
+        
+      Transaction
+      
+      
+      def increment_votes(current_value):
+      return current_value + 1 if current_value else 1
+  
+        upvotes_ref = db.reference('server/saving-data/fireblog/posts/-JRHTHaIs-jNPLXOQivY/upvotes')
+        try:
+            new_vote_count = upvotes_ref.transaction(increment_votes)
+            print('Transaction completed')
+        except db.TransactionAbortedError:
+            print('Transaction failed to commit')
+
+            ..                           
+            ,t:    :1:    :.          
+         .:  :t;. :ti,    i,          
+         ;;   1t:,t;;. .,1t.          
+         ;1.  i1;ti:;::11i,  .        
+       .  t1,.11;i1i;it1:   .1.    
+      ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+    ;1  ,:        :,       i, .t.         
+    .f . :;        ,;       ::  ,t         
+    i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+    networking updating
+
+    node and java but all SDK should do this no?
+
+
+    
+    .,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+    .,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+    ....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+    ..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+    .,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+    .,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+    ,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+    .....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+    ,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+    ....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+    ..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+    .,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+    ..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
+    
+    Retrieving data 
+    
+    ref = db.reference('server/saving-data/fireblog/posts')
+
+    # Read the data at the posts reference (this is a blocking operation)
+    print(ref.get())
+            
+
+                ..                           
+            ,t:    :1:    :.          
+         .:  :t;. :ti,    i,          
+         ;;   1t:,t;;. .,1t.          
+         ;1.  i1;ti:;::11i,  .        
+       .  t1,.11;i1i;it1:   .1.    
+      ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+    ;1  ,:        :,       i, .t.         
+    .f . :;        ,;       ::  ,t         
+    i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+    Querying data 
+
+      
+    @@8Cfi,.           t:              .:C@@
+    @G,.              t@8,              .,0@
+    @f..             ,8@@C               .f@
+    @1,.             1@88@i              .i@
+    @i,              C@008G              .:8
+    @i,.            .00LtC0,             .:8
+    @i,.             LC11fC,             .;8
+    @t,,             :1;;11              .f@
+    @C,,              .i1,              .,G@
+    @@;.          .1fLG00CCL1,          .;8@
+    @@G:,,..      f8888888888G.     ..,,;G@@
+    @@@8800GCf11i1GGG000000000LfLLCGG008@@@@
+  
+        to order by child property 
+
+        ref = db.reference('dinosaurs')
+        snapshot = ref.order_by_child('height').get()
+        for key, val in snapshot.items():
+            print('{0} was {1} meters tall'.format(key, val))
+
+        some pattern you get js primitive, other pattern you get js object    
+        
+      
+        @@8Cfi,.           t:              .:C@@
+        @G,.              t@8,              .,0@
+        @f..             ,8@@C               .f@
+        @1,.             1@88@i              .i@
+        @i,              C@008G              .:8
+        @i,.            .00LtC0,             .:8
+        @i,.             LC11fC,             .;8
+        @t,,             :1;;11              .f@
+        @C,,              .i1,              .,G@
+        @@;.          .1fLG00CCL1,          .;8@
+        @@G:,,..      f8888888888G.     ..,,;G@@
+        @@@8800GCf11i1GGG000000000LfLLCGG008@@@@
+        
+        to order by key 
+
+        snapshot = ref.order_by_key().get()
+        print(snapshot)
+
+
+        
+      
+        @@8Cfi,.           t:              .:C@@
+        @G,.              t@8,              .,0@
+        @f..             ,8@@C               .f@
+        @1,.             1@88@i              .i@
+        @i,              C@008G              .:8
+        @i,.            .00LtC0,             .:8
+        @i,.             LC11fC,             .;8
+        @t,,             :1;;11              .f@
+        @C,,              .i1,              .,G@
+        @@;.          .1fLG00CCL1,          .;8@
+        @@G:,,..      f8888888888G.     ..,,;G@@
+        @@@8800GCf11i1GGG000000000LfLLCGG008@@@@
+        
+        to order by value 
+
+
+        ref = db.reference('scores')
+        snapshot = ref.order_by_value().get()
+        for key, val in snapshot.items():
+            print('The {0} dinosaur\'s score is {1}'.format(key, val))
+                        
+        for objects like this 
+
+        {
+        "scores": {
+            "bruhathkayosaurus" : 55,
+            "lambeosaurus" : 21,
+            "linhenykus" : 80,
+            "pterodactyl" : 93,
+            "stegosaurus" : 5,
+            "triceratops" : 22
+            }
+        }
+
+
+                ..                           
+            ,t:    :1:    :.          
+         .:  :t;. :ti,    i,          
+         ;;   1t:,t;;. .,1t.          
+         ;1.  i1;ti:;::11i,  .        
+       .  t1,.11;i1i;it1:   .1.    
+      ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+    ;1  ,:        :,       i, .t.         
+    .f . :;        ,;       ::  ,t         
+    i1::;;i:::i;:::;1;:;i;;:i1:::f: 
+
+    Complex query 
+
+    to order and begin from end 
+
+    snapshot = ref.order_by_child('weight').limit_to_last(2).get()
+    for key in snapshot:
+        print(key)
+    
+
+    to order and begin from beginning 
+    
+    snapshot = ref.order_by_child('weight').limit_to_first(2).get()
+    for key in snapshot:
+        print(key)    
+    
+    to start at
+
+    snapshot = ref.order_by_child('height').start_at(3).get()
+    for key in snapshot:
+        print(key)
+    
+
+    to end at 
+
+    snapshot = ref.order_by_key().end_at('pterodactyl').get()
+    for key in snapshot:
+        print(key)
+    
+    
+    only the ones that are equal to 
+
+    snapshot = ref.order_by_child('height').equal_to(25).get()
+    for key in snapshot:
+        print(key)
+    
+
+
+    
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
