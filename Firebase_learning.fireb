@@ -3973,13 +3973,162 @@ ignoring the read/write cascade rule
 closed off 
 
 
+               ..                       
+              .:     :.                 
+              :i     ,;..  ..           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.       
+         .: ,tt11ti;i1;;1:  , ;t.       
+         :,  it1it1;1ti;;ii,t :,        
+         , : .i;i;;;1tti;:1t1.          
+        . .1.,i1;::itt1i;,it1i .        
+        : :t1;tt1;::;;;:,,ittt.:        
+        i :ttiit1i:..,,..:1tt1 i.       
+        :i.1t1;;;:.     ,1tt1.:;        
+         ,::1ft1;;:,.,:;i1itt1fi;.      
+      .,;1tLCLLttLift1fLLt11fLtfi,      
+     ,iitfCf;;1itC,LL1t11LCLfti:.       
+     ,;;;;; .i;;if Lfii1,.iLGLiii.      
+       ..   ,iiii, ii;;;i,  :;;;,       
+             ..,.  ,;;iii,              
+                     .,,.               
+
+    Realtime Database Billing 
+
+
+
+    .,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+    .,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+    ....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+    ..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+    .,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+    .,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+    ,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+    .....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+    ,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+    ....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+    ..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+    .,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+    ..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.    
 
   
   
 
+              ..                       
+              .:     :.                 
+              :i     ,;..  ..           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.       
+         .: ,tt11ti;i1;;1:  , ;t.       
+         :,  it1it1;1ti;;ii,t :,        
+         , : .i;i;;;1tti;:1t1.          
+        . .1.,i1;::itt1i;,it1i .        
+        : :t1;tt1;::;;;:,,ittt.:        
+        i :ttiit1i:..,,..:1tt1 i.       
+        :i.1t1;;;:.     ,1tt1.:;        
+         ,::1ft1;;:,.,:;i1itt1fi;.      
+      .,;1tLCLLttLift1fLLt11fLtfi,      
+     ,iitfCf;;1itC,LL1t11LCLfti:.       
+     ,;;;;; .i;;if Lfii1,.iLGLiii.      
+       ..   ,iiii, ii;;;i,  :;;;,       
+             ..,.  ,;;iii,              
+                     .,,.               
 
 
+    Cloud Storage
 
+    media images vids email
+    they are efficient regardless of network quality
+    storage security
+    exabyte scabable
+
+    
+
+    to use a default bucket
+
+    import firebase_admin
+    from firebase_admin import credentials
+    from firebase_admin import storage
+    
+    cred = credentials.Certificate('path/to/serviceAccountKey.json')
+    firebase_admin.initialize_app(cred, {
+        'storageBucket': '<BUCKET_NAME>.appspot.com'
+    })
+    
+    bucket = storage.bucket()
+    
+    # 'bucket' is an object defined in the google-cloud-storage Python library.
+    # See https://googlecloudplatform.github.io/google-cloud-python/latest/storage/buckets.html
+    # for more details.
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.  
+
+to use your bucket other than the one given 
+bucket = storage.bucket('my-custom-bucket')
+
+to use another bucket from another app
+bucket = storage.bucket(app=custom_app)
+
+https://cloud.google.com/storage/docs/reference/libraries
+
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:        
+
+     bucket metadata 
+
+     print("ID: {}".format(bucket.id))
+     print("Name: {}".format(bucket.name))
+     print("Storage Class: {}".format(bucket.storage_class))
+     print("Location: {}".format(bucket.location))
+     print("Location Type: {}".format(bucket.location_type))
+     print("Cors: {}".format(bucket.cors))
+     print(
+         "Default Event Based Hold: {}".format(bucket.default_event_based_hold)
+     )
+     print("Default KMS Key Name: {}".format(bucket.default_kms_key_name))
+     print("Metageneration: {}".format(bucket.metageneration))
+     print(
+         "Retention Effective Time: {}".format(
+             bucket.retention_policy_effective_time
+         )
+     )
+     print("Retention Period: {}".format(bucket.retention_period))
+     print("Retention Policy Locked: {}".format(bucket.retention_policy_locked))
+     print("Requester Pays: {}".format(bucket.requester_pays))
+     print("Self Link: {}".format(bucket.self_link))
+     print("Time Created: {}".format(bucket.time_created))
+     print("Versioning Enabled: {}".format(bucket.versioning_enabled))
+     print("Labels:")
+     pprint.pprint(bucket.labels)
+ 
 
 
 
