@@ -3486,9 +3486,498 @@ print(ref.get())
     for key in snapshot:
         print(key)
     
+        ..                           
+        ,t:    :1:    :.          
+     .:  :t;. :ti,    i,          
+     ;;   1t:,t;;. .,1t.          
+     ;1.  i1;ti:;::11i,  .        
+   .  t1,.11;i1i;it1:   .1.    
+  ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+;1  ,:        :,       i, .t.         
+.f . :;        ,;       ::  ,t         
+i1::;;i:::i;:::;1;:;i;;:i1:::f:         
 
+        How Data is Ordered
+
+        This section explains how your data is ordered when using each of the four ordering functions.
+        orderByChild
+        
+        When using orderByChild(), data that contains the specified child key is ordered as follows:
+        
+            Children with a null value for the specified child key come first.
+            Children with a value of false for the specified child key come next. If multiple children have a value of false, they are sorted lexicographically by key.
+            Children with a value of true for the specified child key come next. If multiple children have a value of true, they are sorted lexicographically by key.
+            Children with a numeric value come next, sorted in ascending order. If multiple children have the same numerical value for the specified child node, they are sorted by key.
+            Strings come after numbers, and are sorted lexicographically in ascending order. If multiple children have the same value for the specified child node, they are ordered lexicographically by key.
+            Objects come last, and sorted lexicographically by key in ascending order.
+        
+        orderByKey
+        
+        When using orderByKey() to sort your data, data is returned in ascending order by key as follows. Keep in mind that keys can only be strings.
+        
+            Children with a key that can be parsed as a 32-bit integer come first, sorted in ascending order.
+            Children with a string value as their key come next, sorted lexicographically in ascending order.
+        
+        orderByValue
+        
+        When using orderByValue(), children are ordered by their value. The ordering criteria is the same as in orderByChild(), except the value of the node is used instead of the value of a specified child key.       
+        
+        
+    
+        .,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+        .,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+        ....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+        ..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+        .,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+        .,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+        ,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+        .....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+        ,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+        ....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+        ..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+        .,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+        ..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
+
+        Database security rules 
 
     
+            ..                           
+            ,t:    :1:    :.          
+        .:  :t;. :ti,    i,          
+        ;;   1t:,t;;. .,1t.          
+        ;1.  i1;ti:;::11i,  .        
+    .  t1,.11;i1i;it1:   .1.    
+    ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+     ;1  ,:        :,       i, .t.         
+    .f . :;        ,;       ::  ,t         
+    i1::;;i:::i;:::;1;:;i;;:i1:::f:   
+
+    .read 	    Describes if and when data is allowed to be read by users.
+    .write 	    Describes if and when data is allowed to be written.
+    .validate 	Defines what a correctly formatted value will look like, whether it has child attributes, and the data type.
+    .indexOn 	Specifies a child to index to support ordering and querying.
+
+
+    to allow anyone to read but not to write 
+
+    {
+        "rules": {
+          "foo": {
+            ".read": true,
+            ".write": false
+          }
+        }
+    }
+    
+    
+    built in rules 
+    $uid = id of users obtained by firebase auth
+    /users/<uid>/
+
+    {
+        "rules": {
+          "users": {
+            "$uid": {
+              ".write": "$uid === auth.uid"
+            }
+          }
+        }
+    }
+
+    to enforce how data comes into yr paths
+
+    {
+        "rules": {
+          "foo": {
+            ".validate": "newData.isString() && newData.val().length < 100"
+          }
+        }
+      }
+
+    
+      if you need to use order_by  you need to support the .indexOn property 
+
+      
+
+
+
+          
+      .,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+      .,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+      ....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+      ..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+      .,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+      .,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+      ,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+      .....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+      ,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+      ....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+      ..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+      .,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+      ..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.
+
+      Secure Data
+    
+            ..                           
+            ,t:    :1:    :.          
+        .:  :t;. :ti,    i,          
+        ;;   1t:,t;;. .,1t.          
+        ;1.  i1;ti:;::11i,  .        
+    .  t1,.11;i1i;it1:   .1.    
+    ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+     ;1  ,:        :,       i, .t.         
+    .f . :;        ,;       ::  ,t         
+    i1::;;i:::i;:::;1;:;i;;:i1:::f:
+
+
+    Structure your data 
+
+    rules for child properties  and
+    new messages must have a string content and a number timestamp
+
+    {
+        "rules": {
+          "messages": {
+            "$message": {
+              // only messages from the last ten minutes can be read
+              ".read": "data.child('timestamp').val() > (now - 600000)",
+      
+              // new messages must have a string content and a number timestamp
+              ".validate": "newData.hasChildren(['content', 'timestamp']) && newData.child('content').isString() && newData.child('timestamp').isNumber()"
+            }
+          }
+        }
+    }
+
+            ..                           
+            ,t:    :1:    :.          
+        .:  :t;. :ti,    i,          
+        ;;   1t:,t;;. .,1t.          
+        ;1.  i1;ti:;::11i,  .        
+    .  t1,.11;i1i;it1:   .1.    
+    ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+     ;1  ,:        :,       i, .t.         
+    .f . :;        ,;       ::  ,t         
+    i1::;;i:::i;:::;1;:;i;;:i1:::f:
+
+
+    Structure your data     
+
+
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| now         | The current time in milliseconds since Linux epoch. This works particularly well for validating timestamps created with the SDK's firebase.database.ServerValue.TIMESTAMP. |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| root        | A RuleDataSnapshot representing the root path in the Firebase database as it exists before the attempted operation.                                                        |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| newData     | A RuleDataSnapshot representing the data as it would exist after the attempted operation. It includes the new data being written and existing data.                        |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| data        | A RuleDataSnapshot representing the data as it existed before the attempted operation.                                                                                     |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| $ variables | A wildcard path used to represent ids and dynamic child keys.                                                                                                              |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| auth        | Represents an authenticated user's token payload.                                                                                                                          |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+      
+They can be used anywhere in the rules 
+
+
+            ..                           
+            ,t:    :1:    :.          
+        .:  :t;. :ti,    i,          
+        ;;   1t:,t;;. .,1t.          
+        ;1.  i1;ti:;::11i,  .        
+    .  t1,.11;i1i;it1:   .1.    
+    ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+     ;1  ,:        :,       i, .t.         
+    .f . :;        ,;       ::  ,t         
+    i1::;;i:::i;:::;1;:;i;;:i1:::f:
+
+
+    this rule would allow us to create new 
+    records or delete existing ones, but not to make changes to existing non-null data:
+    ".write": "!data.exists() || !newData.exists()"
+
+
+    @@@@@@@@@@@@@@
+    @@@@@    22222
+    2222      2222
+    @@@        @@@  Make sure to check for null or invalid data 
+    @@          @@
+    @@          @@
+    
+
+            ..                           
+            ,t:    :1:    :.          
+        .:  :t;. :ti,    i,          
+        ;;   1t:,t;;. .,1t.          
+        ;1.  i1;ti:;::11i,  .        
+    .  t1,.11;i1i;it1:   .1.    
+    ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+     ;1  ,:        :,       i, .t.         
+    .f . :;        ,;       ::  ,t         
+    i1::;;i:::i;:::;1;:;i;;:i1:::f:
+    
+    referencing data in other paths 
+
+    ".write": "root.child('allow_writes').val() === true &&
+        !data.parent().child('readOnly').exists() &&
+        newData.child('foo').exists()"
+
+
+        ..                           
+        ,t:    :1:    :.          
+    .:  :t;. :ti,    i,          
+    ;;   1t:,t;;. .,1t.          
+    ;1.  i1;ti:;::11i,  .        
+.  t1,.11;i1i;it1:   .1.    
+;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+ ;1  ,:        :,       i, .t.         
+.f . :;        ,;       ::  ,t         
+i1::;;i:::i;:::;1;:;i;;:i1:::f:
+
+Read and Write Rules Cascade
+
+shallow rules overwrite deeper rules 
+
+{
+    "rules": {
+       "foo": {
+          // allows read to /foo/*
+          ".read": "data.child('baz').val() === true",
+          "bar": {
+            /* ignored, since read was allowed already */
+            ".read": false
+          }
+       }
+    }
+  }
+  
+
+atomic rules 
+
+{
+    "rules": {
+      "records": {
+        "rec1": {
+          ".read": true
+        },
+        "rec2": {
+          ".read": false
+        }
+      }
+    }
+  }
+
+  
+  yr good for records/rec1 and records/rec 2 but not records 
+  you need a shallower rule or yyou get error 
+
+
+
+        ..                           
+        ,t:    :1:    :.          
+    .:  :t;. :ti,    i,          
+    ;;   1t:,t;;. .,1t.          
+    ;1.  i1;ti:;::11i,  .        
+.  t1,.11;i1i;it1:   .1.    
+;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+ ;1  ,:        :,       i, .t.         
+.f . :;        ,;       ::  ,t         
+i1::;;i:::i;:::;1;:;i;;:i1:::f:
+
+Query based rules 
+
+you can limit access with the query
+
+"baskets": {
+    ".read": "auth.uid != null &&
+              query.orderByChild == 'owner' &&
+              query.equalTo == auth.uid" // restrict basket access to owner of basket
+  }
+
+the query var represents the database methods and the query wants to see those database
+the the args passed to the db methods matching the conditionals in the rules or else it will
+reject the query 
+
+
+        ..                           
+        ,t:    :1:    :.          
+    .:  :t;. :ti,    i,          
+    ;;   1t:,t;;. .,1t.          
+    ;1.  i1;ti:;::11i,  .        
+.  t1,.11;i1i;it1:   .1.    
+;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+ ;1  ,:        :,       i, .t.         
+.f . :;        ,;       ::  ,t         
+i1::;;i:::i;:::;1;:;i;;:i1:::f:
+
+Validate Data 
+
+only allows dates in the format YYYY-MM-DD between the years 1900-2099, which is checked using a regular expression.
+".validate": "newData.isString() &&
+              newData.val().matches(/^(19|20)[0-9][0-9][-\\/. ](0[1-9]|1[012])[-\\/. ](0[1-9]|[12][0-9]|3[01])$/)"
+
+
+@@@@@@@@@@@@@@
+@@@@@    22222
+2222      2222
+@@@        @@@   .validate does not cascade and works only on non null vales, so when you have a root read/write rule use child validate rules
+@@          @@
+@@          @@
+
+
+
+        ..                           
+        ,t:    :1:    :.          
+    .:  :t;. :ti,    i,          
+    ;;   1t:,t;;. .,1t.          
+    ;1.  i1;ti:;::11i,  .        
+.  t1,.11;i1i;it1:   .1.    
+;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+ ;1  ,:        :,       i, .t.         
+.f . :;        ,;       ::  ,t         
+i1::;;i:::i;:::;1;:;i;;:i1:::f:
+
+Using $ Variables to Capture Path Segments
+
+if you want have too many paths with 
+
+/block/#req_param 
+
+you can capture them like this 
+
+{
+    "rules": {
+      "rooms": {
+        // this rule applies to any child of /rooms/, the key for each room id
+        // is stored inside $room_id variable for reference
+        "$room_id": {
+          "topic": {
+            // the room's topic can be changed if the room id has "public" in it
+            ".write": "$room_id.contains('public')"
+          }
+        }
+      }
+    }
+}
+
+{
+    "rules": {
+      "widget": {
+        // a widget can have a title or color attribute
+        "title": { ".validate": true },
+        "color": { ".validate": true },
+  
+        // but no other child paths are allowed
+        // in this case, $other means any key excluding "title" and "color"
+        "$other": { ".validate": false }
+      }
+    }
+}
+
+
+        ..                           
+        ,t:    :1:    :.          
+    .:  :t;. :ti,    i,          
+    ;;   1t:,t;;. .,1t.          
+    ;1.  i1;ti:;::11i,  .        
+.  t1,.11;i1i;it1:   .1.    
+;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+ ;1  ,:        :,       i, .t.         
+.f . :;        ,;       ::  ,t         
+i1::;;i:::i;:::;1;:;i;;:i1:::f:
+
+User Based Security
+
+everything is done w/ the auth variable 
+
+auth 
+
+provider 	The authentication method used ("password", "anonymous", "facebook", "github", "google", or "twitter").
+uid 	A unique user id, guaranteed to be unique across all providers.
+token 	The contents of the Firebase Auth ID token. See the reference documentation for auth.token for more details. 
+
+ex 
+
+{
+    "rules": {
+      "users": {
+        "$user_id": {
+          // grants write access to the owner of this user account
+          // whose uid must exactly match the key ($user_id)
+          ".write": "$user_id === auth.uid"
+        }
+      }
+    }
+  }
+
+  
+
+store all users in one place 
+
+this rul says only user can see their own data 
+
+{
+    "rules": {
+      "users": {
+        "$uid": {
+          ".read": "auth != null && auth.uid == $uid"
+        }
+      }
+    }
+  }
+
+  
+  @@8Cfi,.           t:              .:C@@
+  @G,.              t@8,              .,0@
+  @f..             ,8@@C               .f@
+  @1,.             1@88@i              .i@
+  @i,              C@008G              .:8
+  @i,.            .00LtC0,             .:8
+  @i,.             LC11fC,             .;8
+  @t,,             :1;;11              .f@
+  @C,,              .i1,              .,G@
+  @@;.          .1fLG00CCL1,          .;8@
+  @@G:,,..      f8888888888G.     ..,,;G@@
+  @@@8800GCf11i1GGG000000000LfLLCGG008@@@@
+
+  authentication custom claims 
+
+  {
+    "rules": {
+      "frood": {
+        // A towel is about the most massively useful thing an interstellar
+        // hitchhiker can have
+        ".read": "auth.token.hasEmergencyTowel === true"
+      }
+    }
+  }
+    
+        ..                           
+        ,t:    :1:    :.          
+    .:  :t;. :ti,    i,          
+    ;;   1t:,t;;. .,1t.          
+    ;1.  i1;ti:;::11i,  .        
+.  t1,.11;i1i;it1:   .1.    
+;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+ ;1  ,:        :,       i, .t.         
+.f . :;        ,;       ::  ,t         
+i1::;;i:::i;:::;1;:;i;;:i1:::f:
+
+Resolve Insecurties 
+
+Open access
+Access for any authenticated user
+ignoring the read/write cascade rule 
+closed off 
+
+
+
+  
+  
+
+
 
 
 
