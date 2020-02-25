@@ -4696,6 +4696,285 @@ to monitor activity
 https://firebase.google.com/docs/storage/monitor-storage
 
 
+               ..                       
+              .:     :.                 
+              :i     ,;..  ..           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.       
+         .: ,tt11ti;i1;;1:  , ;t.       
+         :,  it1it1;1ti;;ii,t :,        
+         , : .i;i;;;1tti;:1t1.          
+        . .1.,i1;::itt1i;,it1i .        
+        : :t1;tt1;::;;;:,,ittt.:        
+        i :ttiit1i:..,,..:1tt1 i.       
+        :i.1t1;;;:.     ,1tt1.:;        
+         ,::1ft1;;:,.,:;i1itt1fi;.      
+      .,;1tLCLLttLift1fLLt11fLtfi,      
+     ,iitfCf;;1itC,LL1t11LCLfti:.       
+     ,;;;;; .i;;if Lfii1,.iLGLiii.      
+       ..   ,iiii, ii;;;i,  :;;;,       
+             ..,.  ,;;iii,              
+                     .,,.     
+
+Firebase hosting                     
+
+supports multiple sites in single project 
+use node to prevent ddos 
+
+control how the web content is cached 
+
+
+.,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+.,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+.,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+.,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+.....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+.,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.                                         
+
+Get started
+
+initalizae project 
+firebase init 
+firebase deploy
+
+to nickname multiple sites 
+firebase target:apply hosting blog myapp-blog
+firebase target:apply hosting app myapp-app
+
+then in firebase.json 
+{
+  "hosting": [ {
+      "target": "blog",  // "blog" is the applied target name for the Hosting site "myapp-blog"
+      "public": "blog/dist",  // contents of this folder are deployed to the site "myapp-blog"
+
+      // ...
+    },
+    {
+      "target": "app",  // "app" is the applied target name for the Hosting site "myapp-app"
+      "public": "app/dist",  // contents of this folder are deployed to the site "myapp-app"
+
+      // ...
+
+      "rewrites": [...]  // You can define specific Hosting configurations for each site
+    }
+  ]
+}
+
+
+
+
+..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:        
+
+Connect a custom domain 
+go setup then wait for a SSL Cert
+
+Make sure to remove any A records or CNAME records that point to other providers. 
+Also remove any AAAA records. If any of these record types exist, Firebase cannot provision an SSL certificate.
+
+then you have to come back here to see if your domain is ready or not 
+
+
+..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:        
+
+Configure hosting behavior 
+
+all in firebase.json
+
+public , which directory to deploy to fb hosting 
+ignore specifies files to ignore it takes blob regex 
+if a path does not exist you can make a 404 
+
+to do redirects
+"redirects": [ {
+    // Returns a permanent redirect to "/bar" for requests to "/foo" (but not "/foo/**")
+    "source": "/foo",
+    "destination": "/bar",
+    "type": 301
+  }, {
+    // Returns a permanent redirect to "/bar" for requests to both "/foo" and "/foo/**"
+    "source": "/foo{,/**}"
+    "destination": "/bar"
+    "type": 301
+  }, {
+    // Returns a temporary redirect for all requests to files or directories in the "firebase" directory
+    "source": "/firebase/**",
+    "destination": "https://firebase.google.com/",
+    "type": 302
+  } ]
+
+params and redirects
+
+"hosting": {
+  // ...
+
+  "redirects": [ {
+    "source": "/blog/:post*",  // captures the entire URL segment beginning at "post"
+    "destination": "https://blog.myapp.com/:post", // includes the entire URL segment identified and captured by the "source" value
+    "type": 301
+  }, {
+    "source": "/users/:id/profile",  // captures only the URL segment "id", but nothing following
+    "destination": "/users/:id/newProfile",  // includes the URL segment identified and caputured by the "source" value
+    "type": 301
+  } ]
+}
+
+
+// Add the "rewrites" attribute within "hosting"
+  "rewrites": [ {
+    // Serves index.html for requests to files or directories that do not exist
+    "source": "**",
+    "destination": "/index.html"
+  }, {
+    // Serves index.html for requests to both "/foo" and "/foo/**"
+    // Using "/foo/**" only matches paths like "/foo/xyz", but not "/foo"
+    "source": "/foo{,/**}",
+    "destination": "/index.html"
+  }, {
+    // Excludes specified pathways from rewrites
+    "source": "!/@(js|css)/**",
+    "destination": "/index.html"
+  } ]
+
+
+to directo to firebase function 
+
+"rewrites": [ {
+    "source": "/bigben",
+    "function": "bigben"
+  } ]
+
+direct to cloud run container
+"rewrites": [ {
+   "source": "/helloworld",
+   "run": {
+     "serviceId": "helloworld",  // "service name" (from when you <a href="#deploy">deployed the container image)</a>
+     "region": "us-central1"     // optional (if omitted, default is us-central1)
+   }
+ } ]
+
+ dynamic links
+ "appAssociation": "AUTO",  // required for Dynamic Links (default is AUTO if not specified)
+
+// Add the "rewrites" attribute within "hosting"
+"rewrites": [ {
+  "source": "/**",  // Dynamic Links start with "https://<your-domain>/"
+  "dynamicLinks": true
+} ]
+
+
+..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:        
+
+Dealing w/ headers
+
+
+"hosting": {
+  // ...
+
+  // Add the "headers" attribute within "hosting"
+  "headers": [ {
+    // Specifies a CORS header for all font files
+    "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+    "headers": [ {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    } ]
+  }, {
+    // Overrides the default 1 hour browser cache with a 2 hour cache for all image files
+    "source": "**/*.@(jpg|jpeg|gif|png)",
+    "headers": [ {
+      "key": "Cache-Control",
+      "value": "max-age=7200"
+    } ]
+  }, {
+    // Sets the cache header for 404 pages to cache for 5 minutes
+    "source": "404.html",
+    "headers": [ {
+      "key": "Cache-Control",
+      "value": "max-age=300"
+    } ]
+  } ]
+}
+
+            ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:       
+
+"hosting": {
+  // ...
+
+  // Add the "trailingSlash" attribute within "hosting"
+  "trailingSlash": false
+}
+
+
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:        
+
+glob pattern matching
+
+firebase.json — Only matches the firebase.json file in the root of the public directory
+
+** — Matches any file or folder in an arbitrary sub-directory
+
+* — Only matches files and folders in the root of the public directory
+
+**/.* — Matches any file beginning with . (usually hidden files, like in the .git folder) in an arbitrary sub-directory
+
+**/node_modules/** — Matches any file or folder in an arbitrary sub-directory of a node_modules folder, which can itself be in an arbitrary sub-directory of the public directory
+
+**/*.@(jpg|jpeg|gif|png) — Matches any file in an arbitrary sub-directory that ends with exactly one of the following: .jpg, .jpeg, .gif, or .png
+
+
 
 
 
