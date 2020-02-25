@@ -4380,6 +4380,320 @@ def download_blob(bucket_name, source_blob_name, destination_file_name):
   refer to python documentation to get things done 
 
 
+  .,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+  .,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+  ....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+  ..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+  .,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+  .,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+  ,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+  .....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+  ,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+  ....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+  ..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+  .,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+  ..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.                                         
+
+  
+  Storage security 
+
+
+  to allow all users to perform read or write in storage security 
+
+  service firebase.storage {
+    match /b/{bucket}/o {
+      match /{allPaths=**} {
+        allow read, write: if request.auth != null;
+      }
+    }
+  }
+
+
+data validation 
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /images/{imageId} {
+      // Only allow uploads of any image file that's less than 5MB
+      allow write: if request.resource.size < 5 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+    }
+  }
+}
+
+
+
+// If no condition is specified, the rule evaluates to true
+allow read;
+
+// Rules can optionally specify a condition
+allow write: if <condition>;
+
+// Rules can also specify multiple request methods
+allow read, write: if <condition>;
+
+// Rules match specific paths
+match /images/profilePhoto.png {
+  allow write: if <condition>;
+}
+
+match /images/croppedProfilePhoto.png {
+  allow write: if <other_condition>;
+}
+
+// Rules can specify conditions that consider the request context
+match /images/profilePhoto.png {
+  allow write: if request.auth != null && request.resource.size < 5 * 1024 * 1024;
+}
+
+
+// Grants a user access to a node matching their user ID
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Files look like: "user/<UID>/path/to/file.txt"
+    match /user/{userId}/{allPaths=**} {
+      allow read, write: if request.auth.uid == userId;
+    }
+  }
+}
+
+
+          ..                           
+          ,t:    :1:    :.          
+       .:  :t;. :ti,    i,          
+       ;;   1t:,t;;. .,1t.          
+       ;1.  i1;ti:;::11i,  .        
+     .  t1,.11;i1i;it1:   .1.    
+    ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+  ;1  ,:        :,       i, .t.         
+  .f . :;        ,;       ::  ,t         
+  i1::;;i:::i;:::;1;:;i;;:i1:::f:    
+
+  matches
+
+// Exact match for "images/profilePhoto.png"
+match /images/profilePhoto.png {
+  allow write: if <condition>;
+}
+
+// Exact match for "images/croppedProfilePhoto.png"
+match /images/croppedProfilePhoto.png {
+  allow write: if <other_condition>;
+}
+
+
+// Partial match for files that start with "images"
+match /images {
+  // Exact match for "images/profilePhoto.png"
+  match /profilePhoto.png {
+    allow write: if <condition>;
+  }
+
+  // Exact match for "images/croppedProfilePhoto.png"
+  match /croppedProfilePhoto.png {
+    allow write: if <other_condition>;
+  }
+}
+
+
+@@8Cfi,.           t:              .:C@@
+@G,.              t@8,              .,0@
+@f..             ,8@@C               .f@
+@1,.             1@88@i              .i@
+@i,              C@008G              .:8
+@i,.            .00LtC0,             .:8
+@i,.             LC11fC,             .;8
+@t,,             :1;;11              .f@
+@C,,              .i1,              .,G@
+@@;.          .1fLG00CCL1,          .;8@
+@@G:,,..      f8888888888G.     ..,,;G@@
+@@@8800GCf11i1GGG000000000LfLLCGG008@@@@
+
+wildcard matches
+
+
+// Partial match for files that start with "images"
+if a path matches more than one both is matched
+match /images {
+  // Exact match for "images/*"
+  // e.g. images/profilePhoto.png is matched
+  match /{imageId} {
+    // This rule only matches a single path segment (*)
+    // imageId is a string that contains the specific segment matched
+    allow read: if <condition>;
+  }
+
+  // Exact match for "images/**"
+  // e.g. images/users/user:12345/profilePhoto.png is matched
+  // images/profilePhoto.png is also matched!
+  match /{allImages=**} {
+    // This rule matches one or more path segments (**)
+    // allImages is a path that contains all segments matched
+    allow read: if <other_condition>;
+  }
+}
+
+to restrict 
+// Another way to restrict the name of a file
+match /images/{imageId} {
+  allow read: if imageId == "profilePhoto.png";
+}
+
+            ..                           
+          ,t:    :1:    :.          
+       .:  :t;. :ti,    i,          
+       ;;   1t:,t;;. .,1t.          
+       ;1.  i1;ti:;::11i,  .        
+     .  t1,.11;i1i;it1:   .1.    
+    ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+  ;1  ,:        :,       i, .t.         
+  .f . :;        ,;       ::  ,t         
+  i1::;;i:::i;:::;1;:;i;;:i1:::f:  
+
+Request object 
+
+auth 	map<string, string> 	When a user is logged in, provides uid, the user's unique ID, and token, a map of Firebase Authentication JWT claims. Otherwise, it will be null.
+params 	map<string, string> 	Map containing the query parameters of the request.
+path 	path 	A path representing the path the request is being performed at.
+resource 	map<string, string> 	The new resource value, present only on write requests.
+time 	timestamp 	A timestamp representing the server time the request is evaluated at. 
+
+
+..                           
+          ,t:    :1:    :.          
+       .:  :t;. :ti,    i,          
+       ;;   1t:,t;;. .,1t.          
+       ;1.  i1;ti:;::11i,  .        
+     .  t1,.11;i1i;it1:   .1.    
+    ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+  ;1  ,:        :,       i, .t.         
+  .f . :;        ,;       ::  ,t         
+  i1::;;i:::i;:::;1;:;i;;:i1:::f:  
+
+resource object (file metadata )
+
++--------------------+---------------------+---------------------------------------------------------------------+
+| Property           | Type                | Description                                                         |
++--------------------+---------------------+---------------------------------------------------------------------+
+| name               | string              | The full name of the object                                         |
++--------------------+---------------------+---------------------------------------------------------------------+
+| bucket             | string              | The name of the bucket this object resides in.                      |
++--------------------+---------------------+---------------------------------------------------------------------+
+| generation         | int                 | The GCS object generation of this object.                           |
++--------------------+---------------------+---------------------------------------------------------------------+
+| metageneration     | int                 | The GCS object metageneration of this object.                       |
++--------------------+---------------------+---------------------------------------------------------------------+
+| size               | int                 | The size of the object in bytes.                                    |
++--------------------+---------------------+---------------------------------------------------------------------+
+| timeCreated        | timestamp           | A timestamp representing the time an object was created.            |
++--------------------+---------------------+---------------------------------------------------------------------+
+| updated            | timestamp           | A timestamp representing the time an object was last updated.       |
++--------------------+---------------------+---------------------------------------------------------------------+
+| md5Hash            | string              | An MD5 hash of the object.                                          |
++--------------------+---------------------+---------------------------------------------------------------------+
+| crc32c             | string              | A crc32c hash of the object.                                        |
++--------------------+---------------------+---------------------------------------------------------------------+
+| etag               | string              | The etag associated with this object.                               |
++--------------------+---------------------+---------------------------------------------------------------------+
+| contentDisposition | string              | The content disposition associated with this object.                |
++--------------------+---------------------+---------------------------------------------------------------------+
+| contentEncoding    | string              | The content encoding associated with this object.                   |
++--------------------+---------------------+---------------------------------------------------------------------+
+| contentLanguage    | string              | The content language associated with this object.                   |
++--------------------+---------------------+---------------------------------------------------------------------+
+| contentType        | string              | The content type associated with this object.                       |
++--------------------+---------------------+---------------------------------------------------------------------+
+| metadata           | map<string, string> | Key/value pairs of additional, developer specified custom metadata. |
++--------------------+---------------------+---------------------------------------------------------------------+
+
+           ..                           
+          ,t:    :1:    :.          
+       .:  :t;. :ti,    i,          
+       ;;   1t:,t;;. .,1t.          
+       ;1.  i1;ti:;::11i,  .        
+     .  t1,.11;i1i;it1:   .1.    
+    ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+  ;1  ,:        :,       i, .t.         
+  .f . :;        ,;       ::  ,t         
+  i1::;;i:::i;:::;1;:;i;;:i1:::f:  
+
+
+example
+
+service firebase.storage {
+ match /b/{bucket}/o {
+   match /images {
+     // Cascade read to any image type at any path
+     match /{allImages=**} {
+       allow read;
+     }
+
+     // Allow write files to the path "images/*", subject to the constraints:
+     // 1) File is less than 5MB
+     // 2) Content type is an image
+     // 3) Uploaded content type matches existing content type (if it exists)
+     // 4) File name (stored in imageId wildcard variable) is less than 32 characters
+     match /{imageId} {
+       allow write: if request.resource.size < 5 * 1024 * 1024
+                    && request.resource.contentType.matches('image/.*')
+                    && (resource == null || request.resource.contentType == resource.contentType)
+                    && imageId.size() < 32
+     }
+   }
+ }
+}
+
+
+..                           
+          ,t:    :1:    :.          
+       .:  :t;. :ti,    i,          
+       ;;   1t:,t;;. .,1t.          
+       ;1.  i1;ti:;::11i,  .        
+     .  t1,.11;i1i;it1:   .1.    
+    ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+  ;1  ,:        :,       i, .t.         
+  .f . :;        ,;       ::  ,t         
+  i1::;;i:::i;:::;1;:;i;;:i1:::f:  
+
+Secure User data
+
+    Public: ignore request.auth
+    Authenticated private: check that request.auth is not null
+    User private: check that request.auth.uid equals a path uid
+    Group private: check the custom token's claims to match a chosen claim, or read the file metadata to see if a metadata field exists
+
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /images {
+      // Anyone can view any image (no auth, publicly readable)
+      match /{allImages=**} {
+        allow read;
+      }
+
+      // Only authenticated users can write to "public" images
+      match /public/{imageId} {
+        allow write: if request.auth != null;
+      }
+
+      // Only an individual user can write to "their" images
+      match /{userId}/{imageId} {
+        allow write: if request.auth.uid == userId;
+      }
+
+      // Allow a "group" of users to read/write to shared images
+      // An owner metadata property on the object contains the groupId for reads
+      // A custom token has been minted with a groupId property for writes
+      match /{groupId}/{imageId} {
+        allow read: if resource.metadata.owner == request.auth.token.groupId;
+        allow write: if request.auth.token.groupId == groupId;
+      }
+    }
+  }
+}
+
+to monitor activity 
+https://firebase.google.com/docs/storage/monitor-storage
 
 
 
