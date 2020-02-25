@@ -4130,6 +4130,78 @@ https://cloud.google.com/storage/docs/reference/libraries
      pprint.pprint(bucket.labels)
  
 
+     .,,,.,,...,,,,.,,.;:.1;.,,,,,,,,.,...,,,
+     .,.,,.,,...,,,,i,.;;:1i,...,,,..,,..,,..
+     ....,,,....,,.:1,;1:;1i,.,,.,,..,,,..,..
+     ..,,..,...,.:.:1;1;:,1ii,:;.,....,...,,.
+     .,,,,.,,.,;,;i;iiii:;::;iii;i:.,..,,.,,,
+     .,.,...,,.1it1i;t;:;:;:;;;;i;..,,,.,.,,.
+     ,....,,...,;1i;;;i:i:i:;;:;1:,,,.,,,.,..
+     .....,.,tftCCfiti;tt;i1tiifCLLLf.....,..
+     ,,.,,.,iGGCCLLfLffLfLfLfttLCCLfLL1.,,,,,
+     ....,.1GLtfffff1tCLtL0CftfCCCGGLLi.,.,,.
+     ..,.,.:LCLGGCftfCGLCLLC0CCCGCLf;..,...,.
+     .,..,,.,,,fGGGGfCCCCCLCLGCLf;,..,,,,.,,.
+     ..,,..,...,it1:.;LCCCL1,;:....,,,,...,,.       
+
+     uploading objects
+
+
+     from google.cloud import storage
+
+
+def upload_blob(bucket_name, source_file_name, destination_blob_name):
+    """Uploads a file to the bucket."""
+    # bucket_name = "your-bucket-name"
+    # source_file_name = "local/path/to/file"
+    # destination_blob_name = "storage-object-name"
+
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(destination_blob_name)
+
+    blob.upload_from_filename(source_file_name)
+
+    print(
+        "File {} uploaded to {}.".format(
+            source_file_name, destination_blob_name
+        )
+    )
+
+
+               ..                           
+              ,t:    :1:    :.          
+           .:  :t;. :ti,    i,          
+           ;;   1t:,t;;. .,1t.          
+           ;1.  i1;ti:;::11i,  .        
+         .  t1,.11;i1i;it1:   .1.    
+        ;ti;i;;;:i;;:1;;;ii:;;i:1t,          
+      ;1  ,:        :,       i, .t.         
+      .f . :;        ,;       ::  ,t         
+      i1::;;i:::i;:::;1;:;i;;:i1:::f:    
+
+      To list your objects
+
+      def list_blobs(bucket_name):
+      """Lists all the blobs in the bucket."""
+      # bucket_name = "your-bucket-name"
+  
+      storage_client = storage.Client()
+  
+      # Note: Client.list_blobs requires at least package version 1.17.0.
+      blobs = storage_client.list_blobs(bucket_name)
+  
+      for blob in blobs:
+          print(blob.name)
+
+          storage_client.list_blobs(
+            bucket_name, prefix=prefix, delimiter=delimiter
+        )
+    
+    prefix is to give everything under the path 
+    delimiter  = '/' makes everything chose only that path idk if its only
+     or everything up to  that path 
+  
 
 
 
